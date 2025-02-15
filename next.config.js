@@ -47,12 +47,10 @@ const nextConfig = {
   },
   // Temporarily disable environment variable validation
   env: {},
-  },
-  devServer: {
-    port: 3001,
-  },
+  }
 
 nextConfig.env = {
+    PORT: process.env.PORT || '3001',
   ANALYZE: env.ANALYZE,
   NEXT_PUBLIC_API_URL: env.NEXT_PUBLIC_API_URL,
   DATABASE_URL: env.DATABASE_URL,
