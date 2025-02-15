@@ -43,6 +43,9 @@ const nextConfig = {
     }
     return config
   },
+  devServer: {
+    port: 3001, // or any other port number you prefer
+  },
 }
 
-module.exports = withBundleAnalyzer(nextConfig) 
+module.exports = withBundleAnalyzer(nextConfig)
