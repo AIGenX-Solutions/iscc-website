@@ -12,6 +12,7 @@ const envSchema = z.object({
   EMAIL_FROM: z.string().email(),
   NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: z.string().optional(),
   NEXT_PUBLIC_SENTRY_DSN: z.string().url().optional(),
+  NEXT_PUBLIC_FEATURE_FLAG: z.string().optional().transform((val) => val === 'true'),
   STRIPE_PUBLIC_KEY: z.string().min(1, 'STRIPE_PUBLIC_KEY is required'),
   STRIPE_SECRET_KEY: z.string().min(1, 'STRIPE_SECRET_KEY is required'),
   AWS_ACCESS_KEY_ID: z.string().min(1, 'AWS_ACCESS_KEY_ID is required'),
@@ -55,4 +56,3 @@ export const env = parsedEnv.data;
 - Add `zod` to the project dependencies by running:
   ```bash
   npm install zod
-  

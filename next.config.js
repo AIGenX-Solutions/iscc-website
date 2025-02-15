@@ -4,6 +4,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const { env } = require('./src/lib/env');
 
+const { env } = require('./src/lib/env');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Enable experimental features for better performance
@@ -45,6 +47,15 @@ const nextConfig = {
     }
     return config
   },
+  // Validate environment variables
+  env: (() => {
+    try {
+      return env;
+    } catch (error) {
+      console.error('Environment variable validation failed:', error.message);
+      throw new Error('Invalid environment variables. Please check your .env configuration.');
+    }
+  })(),
   devServer: {
     port: 3001, // or any other port number you prefer
   },
