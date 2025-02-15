@@ -7,12 +7,17 @@ const envSchema = z.object({
   DATABASE_URL: z.string().url(),
   SECRET_KEY: z.string().min(1, 'SECRET_KEY is required'),
   NODE_ENV: z.enum(['development', 'production', 'test']),
-  PORT: z.string().regex(/^\d+$/, 'PORT must be a number').transform(Number),
+  PORT: z.string()
+    .regex(/^\d+$/, 'PORT must be a number')
+    .transform(Number)
+    .refine((port) => port > 0 && port <= 65535, {
+      message: 'PORT must be a valid number between 1 and 65535',
+    }),
   EMAIL_SERVICE_API_KEY: z.string().min(1, 'EMAIL_SERVICE_API_KEY is required'),
   EMAIL_FROM: z.string().email(),
-  NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: z.string().optional(),
-  NEXT_PUBLIC_SENTRY_DSN: z.string().url().optional(),
-  NEXT_PUBLIC_FEATURE_FLAG: z.string().optional().transform((val) => val === 'true'),
+  NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: z.string().default(''),
+  NEXT_PUBLIC_SENTRY_DSN: z.string().url().optional().default(''),
+  NEXT_PUBLIC_FEATURE_FLAG: z.string().optional().default('false').transform((val) => val === 'true'),
   STRIPE_PUBLIC_KEY: z.string().min(1, 'STRIPE_PUBLIC_KEY is required'),
   STRIPE_SECRET_KEY: z.string().min(1, 'STRIPE_SECRET_KEY is required'),
   AWS_ACCESS_KEY_ID: z.string().min(1, 'AWS_ACCESS_KEY_ID is required'),
@@ -25,7 +30,7 @@ const envSchema = z.object({
 const parsedEnv = envSchema.safeParse(process.env);
 
 if (!parsedEnv.success) {
-  console.error('❌ Invalid environment variables:', parsedEnv.error.format());
+  console.error('❌ Invalid environment variables:', JSON.stringify(parsedEnv.error.format(), null, 2));
   throw new Error('Environment variable validation failed');
 }
 

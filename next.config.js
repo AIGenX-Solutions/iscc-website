@@ -54,8 +54,6 @@ const nextConfig = {
       throw new Error('Invalid environment variables. Please check your .env configuration.');
     }
   })(),
-  // Set the development server port using the environment variable
-  port: process.env.PORT || 3001,
 }
 
 nextConfig.env = {
@@ -64,7 +62,6 @@ nextConfig.env = {
   DATABASE_URL: env.DATABASE_URL,
   SECRET_KEY: env.SECRET_KEY,
   NODE_ENV: env.NODE_ENV,
-  PORT: env.PORT,
   EMAIL_SERVICE_API_KEY: env.EMAIL_SERVICE_API_KEY,
   EMAIL_FROM: env.EMAIL_FROM,
   NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID,
