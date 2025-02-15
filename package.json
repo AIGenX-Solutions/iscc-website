@@ -10,7 +10,8 @@
     "start": "next start",
     "lint": "next lint",
     "clean": "rimraf .next out",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "postinstall": "npm install"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^14.1.0",
