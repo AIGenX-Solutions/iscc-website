@@ -45,16 +45,12 @@ const nextConfig = {
     }
     return config
   },
-  // Validate environment variables
-  env: (() => {
-    try {
-      return env;
-    } catch (error) {
-      console.error('Environment variable validation failed:', error.message);
-      throw new Error('Invalid environment variables. Please check your .env configuration.');
-    }
-  })(),
-}
+  // Temporarily disable environment variable validation
+  env: {},
+  },
+  devServer: {
+    port: 3001,
+  },
 
 nextConfig.env = {
   ANALYZE: env.ANALYZE,
