@@ -2,6 +2,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
+const { env } = require('./src/lib/env');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Enable experimental features for better performance
@@ -48,4 +50,23 @@ const nextConfig = {
   },
 }
 
-module.exports = withBundleAnalyzer(nextConfig)
+nextConfig.env = {
+  ANALYZE: env.ANALYZE,
+  NEXT_PUBLIC_API_URL: env.NEXT_PUBLIC_API_URL,
+  DATABASE_URL: env.DATABASE_URL,
+  SECRET_KEY: env.SECRET_KEY,
+  NODE_ENV: env.NODE_ENV,
+  PORT: env.PORT,
+  EMAIL_SERVICE_API_KEY: env.EMAIL_SERVICE_API_KEY,
+  EMAIL_FROM: env.EMAIL_FROM,
+  NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID,
+  NEXT_PUBLIC_SENTRY_DSN: env.NEXT_PUBLIC_SENTRY_DSN,
+  STRIPE_PUBLIC_KEY: env.STRIPE_PUBLIC_KEY,
+  STRIPE_SECRET_KEY: env.STRIPE_SECRET_KEY,
+  AWS_ACCESS_KEY_ID: env.AWS_ACCESS_KEY_ID,
+  AWS_SECRET_ACCESS_KEY: env.AWS_SECRET_ACCESS_KEY,
+  AWS_S3_BUCKET_NAME: env.AWS_S3_BUCKET_NAME,
+  AWS_REGION: env.AWS_REGION,
+};
+
+module.exports = withBundleAnalyzer(nextConfig);
