@@ -6,6 +6,8 @@
     "dev": "next dev",
     "dev:turbo": "next dev --turbo",
     "build": "next build",
+    "build:sitemap": "next-sitemap",
+    "deploy": "next build && next-sitemap",
     "build:analyze": "ANALYZE=true next build",
     "build:sitemap": "next-sitemap",
     "deploy": "next build && next-sitemap",

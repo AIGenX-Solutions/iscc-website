@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Navigation } from '@/components/Navigation'
+import { Analytics } from '@vercel/analytics/react'
 import { Footer } from '@/components/Footer'
 
 // Initialize Inter font
@@ -70,7 +71,8 @@ export default function RootLayout({
           {children}
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   )
-} 
+}

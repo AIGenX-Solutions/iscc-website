@@ -6,6 +6,12 @@
       "use": "@vercel/next"
     }
   ],
+  "functions": {
+    "api/**/*.js": {
+      "memory": 512,
+      "maxDuration": 10
+    }
+  },
   "env": {
     "NEXT_PUBLIC_API_URL": "https://api.iscc.org",
     "NEXT_PUBLIC_ANALYTICS_ID": "UA-XXXXXXXXX-X"
@@ -37,6 +43,10 @@
         {
           "key": "Permissions-Policy",
           "value": "geolocation=(), microphone=(), camera=()"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     }
@@ -57,6 +67,10 @@
     {
       "source": "/api/:path*",
       "destination": "https://api.iscc.org/:path*"
+    },
+    {
+      "source": "/legacy/:path*",
+      "destination": "https://legacy.iscc.org/:path*"
     }
   ]
 }

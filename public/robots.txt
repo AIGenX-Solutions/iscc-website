@@ -8,9 +8,20 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 Disallow: /private/
+Disallow: /temp/
+Disallow: /staging/
 
 # Sitemap location
 Sitemap: https://iscc.org/sitemap.xml
+Sitemap: https://iscc.org/sitemap-0.xml
 
 # Crawl-delay settings
 Crawl-delay: 10
+
+# Additional directives
+User-agent: Googlebot
+Allow: /public/
+Disallow: /private/
+
+User-agent: Bingbot
+Crawl-delay: 5
