@@ -1,0 +1,16 @@
+# robots.txt
+
+# User-agent directives
+User-agent: *
+Allow: /
+
+# Disallow rules
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# Sitemap location
+Sitemap: https://iscc.org/sitemap.xml
+
+# Crawl-delay settings
+Crawl-delay: 10

@@ -7,6 +7,8 @@
     "dev:turbo": "next dev --turbo",
     "build": "next build",
     "build:analyze": "ANALYZE=true next build",
+    "build:sitemap": "next-sitemap",
+    "deploy": "next build && next-sitemap",
     "start": "next start",
     "lint": "next lint",
     "clean": "rimraf .next out",
@@ -25,7 +27,9 @@
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.15.1",
     "sharp": "^0.33.2",
-    "tailwind-merge": "^2.2.1"
+    "tailwind-merge": "^2.2.1",
+    "@vercel/analytics": "^1.0.0",
+    "next-sitemap": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.16",
