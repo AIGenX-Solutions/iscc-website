@@ -4,8 +4,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const { env } = require('./src/lib/env');
 
-const { env } = require('./src/lib/env');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Enable experimental features for better performance
@@ -56,9 +54,8 @@ const nextConfig = {
       throw new Error('Invalid environment variables. Please check your .env configuration.');
     }
   })(),
-  devServer: {
-    port: 3001, // or any other port number you prefer
-  },
+  // Set the development server port using the environment variable
+  port: process.env.PORT || 3001,
 }
 
 nextConfig.env = {
