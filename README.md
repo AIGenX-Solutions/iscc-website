@@ -1,4 +1,4 @@
-# International Shepards Christian Coalition Website
+# International Apostalic Christian Coalition Website
 
 A modern, responsive website built with Next.js and TypeScript for the International Shepards Christian Coalition.
 
